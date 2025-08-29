@@ -8,6 +8,8 @@ import { logMiddleware } from "./middlewares";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const PORT = process.env.PORT || 3008;
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -23,6 +25,6 @@ app.get("/", (req, res) => {
 
 app.use("/", router);
 
-app.listen(3008, () => {
+app.listen(PORT, () => {
   console.log("Serveur démarré sur http://localhost:3008");
 });
