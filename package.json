@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "server.ts",
+    "build": "tsc",
     "start": "tsx server.ts"
   },
   "keywords": [],
@@ -22,6 +23,7 @@
     "@types/express": "^4.17.17",
     "@types/node": "^24.3.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
 }
