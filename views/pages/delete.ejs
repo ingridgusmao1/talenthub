@@ -1,0 +1,35 @@
+<%- include('../partials/head', { title: 'TalentHub - Supprimer annonce' }) %>
+    <%- include('../partials/header') %>
+
+<body>
+    <div class="container">
+       
+        
+        <div class="main-card">
+             <a href="/annonces/<%= id %>" class="cancel-button">Annuler</a>
+            <h1 class="job-title">Suppression de l'annonce : <%= title %></h1>
+            
+            <form method="POST" action="/annonces/<%= id %>/delete">
+                <div class="form-group">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-input"
+                        placeholder="••••••••••••••••••••••••••••••"
+                        required
+                    >
+                    <div class="help-text">
+                        Le mot de passe défini lors de la création de l'annonce est nécessaire pour supprimer l'annonce. Sans ce mot de passe, celle-ci ne sera pas supprimée.
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-button">
+                    Supprimer définitivement l'annonce
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<%- include('../partials/head', { title: 'TalentHub - Créer une annonce' }) %>
+<body>
+    <%- include('../partials/header') %>
+    <div class="container">
+        <a href="/annonces" class="btn-cancel">Annuler</a>
+        
+        <div class="form-header">
+            <h1 class="form-title">Création d'une annonce</h1>
+        </div>
+
+        <div class="form-content">
+            <form method="POST" action="/annonces/create">
+                <div class="form-group">
+                    <label for="title">Titre de l'annonce</label>
+                    <input type="text" id="title" name="title" placeholder="Recherche talent junior" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description de l'offre</label>
+                    <textarea id="description" name="description" placeholder="Décrivez votre offre d'emploi..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Compétence(s) recherchée(s)</label>
+                    <select id="skills" name="skills" multiple>
+                        <option value="API REST">API REST</option>
+                        <option value="TypeScript">TypeScript</option>
+                        <option value="React">React</option>
+                        <option value="Node.js">Node.js</option>
+                        <option value="PHP">PHP</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="missionType">Type de mission</label>
+                        <select id="missionType" name="missionType" required>
+                            <option value="">Freelance, CDI ...</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="CDI">CDI</option>
+                            <option value="CDD">CDD</option>
+                            <option value="Stage">Stage</option>
+                        </select>
+                    </div>
+                    <div class="form-col">
+                        <label for="onboarding">Date onboarding</label>
+                        <select id="onboarding" name="onboarding" required>
+                            <option value="Immédiat">Immédiat</option>
+                            <option value="Dans 1 semaine">Dans 1 semaine</option>
+                            <option value="Dans 1 mois">Dans 1 mois</option>
+                            <option value="Dans 3 mois">Dans 3 mois</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="salary">Salaire</label>
+                        <input type="number" id="salary" name="salary" placeholder="€" required>
+                    </div>
+                    <div class="form-col">
+                        <label for="salaryUnit">Unité de salaire</label>
+                        <select id="salaryUnit" name="salaryUnit" required>
+                            <option value="€ brut annuel">Brut annuel</option>
+                            <option value="€ brut mensuel">Brut mensuel</option>
+                            <option value="€ net mensuel">Net mensuel</option>
+                            <option value="€ par jour">Par jour</option>
+                            <option value="€ par heure">Par heure</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <div class="password-field">
+                        <input type="password" id="password" name="password" class="password-input" required>
+                        <span class="password-dots"></span>
+                    </div>
+                    <div class="form-note">
+                        Un mot de passe est nécessaire pour administrer l'annonce une fois publiée. Assurez-vous de le conserver précieusement.
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Créer l'annonce</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

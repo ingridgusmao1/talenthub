@@ -1,0 +1,31 @@
+<%- include('../partials/head', { title: 'TalentHub - ' + annonce.title }) %>
+    <%- include('../partials/header') %>
+
+<body>
+    <main class="container-card">
+        <div class="job-actions">
+            <a href="/annonces/<%= annonce.id %>/edit" class="btn-secondary">Editer</a>
+            <a href="/annonces/<%= annonce.id %>/delete" class="btn-secondary">Supprimer</a>
+        </div>
+        
+        <article class="job-card">
+            <h1 class="job-title"><%= annonce.title %></h1>
+            <div class="job-tags">
+                <% annonce.tags.forEach(tag => { %>
+                    <span class="tag <%= tag.class %>"><%= tag.label %></span>
+                <% }) %>
+                <span class="tag freelance"><%= annonce.missionType %></span>
+                <span class="tag full-time"><%= annonce.salary %><%= annonce.salaryUnit %></span>
+            </div>
+            <div class="job-date"><%= new Date().toLocaleDateString('fr-FR') %></div>
+            <div class="job-description">
+                <p><%= annonce.description %></p>
+            </div>
+        </article>
+        
+        <div style="margin-top: 20px;">
+            <a href="/annonces" class="btn-primary">Retour aux annonces</a>
+        </div>
+    </main>
+</body>
+</html>

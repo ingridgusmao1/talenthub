@@ -1,0 +1,33 @@
+<%- include('../partials/head', { title: 'TalentHub - Toutes les annonces' }) %>
+<body>
+    <%- include('../partials/header') %>
+    
+    <% if (typeof flash !== 'undefined' && flash) { %>
+        <div class="flash-message <%= flash.type %>">
+            <%= flash.message %>
+        </div>
+    <% } %>
+    
+    <div class="container">
+        <h1 class="missions-header"><%= annonces.length %> missions disponibles</h1>
+        <div class="missions-grid">
+            <% annonces.forEach(annonce => { %>
+                <div class="mission-card">
+                    <h2 class="mission-title"><%= annonce.title %></h2>
+                    <p class="mission-description"><%= annonce.description.substring(0, 150) %>...</p>
+                    <div class="mission-tags">
+                        <% annonce.tags.forEach(tag => { %>
+                            <span class="tag <%= tag.class %>"><%= tag.label %></span>
+                        <% }) %>
+                    </div>
+                    <div class="mission-actions">
+                        <a href="/annonces/<%= annonce.id %>" class="btn-primary">Voir</a>
+                        <a href="/annonces/<%= annonce.id %>/edit" class="btn-secondary">Éditer</a>
+                        <a href="/annonces/<%= annonce.id %>/delete" class="btn-secondary">Supprimer</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

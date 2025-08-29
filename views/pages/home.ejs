@@ -1,0 +1,39 @@
+<%- include('../partials/head', { title: 'TalentHub - Accueil' }) %>
+<body>
+    <%- include('../partials/header') %>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">TROUVEZ LA MISSION QUI VOUS CORRESPOND</h1>
+            <p class="hero-description">
+                Découvrez des annonces claires, accessibles et adaptées à vos talents.<br>
+                Publiez, éditez ou supprimez vos offres en toute simplicité.
+            </p>
+            <a href="/annonces" class="btn-hero">DÉCOUVREZ LES OFFRES</a>
+        </div>
+    </section>
+    
+    <div class="container">
+        <h2 class="missions-header">LES DERNIÈRES ANNONCES</h2>
+        <div class="missions-grid">
+            <% latestAnnonces.forEach(annonce => { %>
+                <div class="mission-card">
+                    <h2 class="mission-title"><%= annonce.title %></h2>
+                    <p class="mission-description"><%= annonce.description.substring(0, 150) %>...</p>
+                    <div class="mission-tags">
+                        <% annonce.tags.forEach(tag => { %>
+                            <span class="tag <%= tag.class %>"><%= tag.label %></span>
+                        <% }) %>
+                    </div>
+                    <div class="mission-actions">
+                    <a href="/annonces/<%= annonce.id %>" class="btn-secondary">Voir détails</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="view-all-section">
+            <a href="/annonces" class="btn-view-all">CONSULTER TOUTES LES ANNONCES</a>
+        </div>
+    </div>
+</body>
+</html>

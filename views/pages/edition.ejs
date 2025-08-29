@@ -1,0 +1,88 @@
+<%- include('../partials/head', { title: 'TalentHub - Éditer annonce' }) %>
+    <%- include('../partials/header') %>
+
+<body>
+    <div class="container-edit">
+        <a href="/annonces/<%= annonce.id %>" class="btn-cancel">Annuler</a>
+        
+        <div class="form-header">
+            <h1 class="form-title">Édition de l'annonce : <%= annonce.title %></h1>
+        </div>
+        
+        <form class="form-content" method="POST" action="/annonces/<%= annonce.id %>/edit">
+            <input type="hidden" name="_method" value="PUT">
+            
+            <div class="form-group">
+                <label class="form-label" for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" class="form-input" required>
+                <div class="help-text">
+                    Le mot de passe défini lors de la création de l'annonce est nécessaire pour enregistrer vos modifications. Sans ce mot de passe, celles-ci ne seront pas appliquées.
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="title">Titre de l'annonce</label>
+                <input type="text" id="title" name="title" class="form-input" value="<%= annonce.title %>" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="description">Description de l'offre</label>
+                <textarea id="description" name="description" class="form-textarea" required><%= annonce.description %></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="skills">Compétence(s) recherchée(s)</label>
+                <select id="skills" name="skills" class="form-select" multiple>
+                    <option value="API REST" <%= annonce.tags.some(tag => tag.label === 'API REST') ? 'selected' : '' %>>API REST</option>
+                    <option value="TypeScript" <%= annonce.tags.some(tag => tag.label === 'TypeScript') ? 'selected' : '' %>>TypeScript</option>
+                    <option value="React" <%= annonce.tags.some(tag => tag.label === 'React') ? 'selected' : '' %>>React</option>
+                    <option value="Node.js" <%= annonce.tags.some(tag => tag.label === 'Node.js') ? 'selected' : '' %>>Node.js</option>
+                    <option value="PHP" <%= annonce.tags.some(tag => tag.label === 'PHP') ? 'selected' : '' %>>PHP</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="missionType">Type de mission</label>
+                    <select id="missionType" name="missionType" class="form-select" required>
+                        <option value="CDI" <%= annonce.missionType === 'CDI' ? 'selected' : '' %>>CDI</option>
+                        <option value="CDD" <%= annonce.missionType === 'CDD' ? 'selected' : '' %>>CDD</option>
+                        <option value="Freelance" <%= annonce.missionType === 'Freelance' ? 'selected' : '' %>>Freelance</option>
+                        <option value="Stage" <%= annonce.missionType === 'Stage' ? 'selected' : '' %>>Stage</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="onboarding">Date onboarding</label>
+                    <select id="onboarding" name="onboarding" class="form-select" required>
+                        <option value="Immédiat" <%= annonce.onboarding === 'Immédiat' ? 'selected' : '' %>>Immédiat</option>
+                        <option value="Dans 1 semaine" <%= annonce.onboarding === 'Dans 1 semaine' ? 'selected' : '' %>>Dans 1 semaine</option>
+                        <option value="Dans 1 mois" <%= annonce.onboarding === 'Dans 1 mois' ? 'selected' : '' %>>Dans 1 mois</option>
+                        <option value="Dans 3 mois" <%= annonce.onboarding === 'Dans 3 mois' ? 'selected' : '' %>>Dans 3 mois</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="salary-row">
+                <div class="salary-group">
+                    <label class="form-label" for="salary">Salaire</label>
+                    <input type="number" id="salary" name="salary" class="form-input" value="<%= annonce.salary %>" required>
+                </div>
+                
+                <div class="salary-group">
+                    <label class="form-label" for="salaryUnit">Unité de salaire</label>
+                    <select id="salaryUnit" name="salaryUnit" class="form-select" required>
+                        <option value="€ brut annuel" <%= annonce.salaryUnit === '€ brut annuel' ? 'selected' : '' %>>Brut annuel</option>
+                        <option value="€ brut mensuel" <%= annonce.salaryUnit === '€ brut mensuel' ? 'selected' : '' %>>Brut mensuel</option>
+                        <option value="€ net annuel" <%= annonce.salaryUnit === '€ net annuel' ? 'selected' : '' %>>Net annuel</option>
+                        <option value="€ net mensuel" <%= annonce.salaryUnit === '€ net mensuel' ? 'selected' : '' %>>Net mensuel</option>
+                        <option value="€ par jour" <%= annonce.salaryUnit === '€ par jour' ? 'selected' : '' %>>Par jour</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-save">Sauvegarder les modifications</button>
+        </form>
+    </div>
+</body>
+</html>
