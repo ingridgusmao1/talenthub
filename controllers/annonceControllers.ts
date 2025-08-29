@@ -1,4 +1,4 @@
-import { Controller } from "../libs/Controller.ts";
+import { Controller } from "../libs/Controller";
 
 interface Annonce {
   id: number;

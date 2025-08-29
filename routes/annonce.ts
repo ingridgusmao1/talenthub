@@ -1,6 +1,6 @@
 
 import { Router } from "express";
-import { annonceControllers } from "../controllers/annonceControllers.ts";
+import { annonceControllers } from "../controllers/annonceControllers";
 
 const routerAnnonce = Router();
 

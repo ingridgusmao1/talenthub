@@ -1,9 +1,9 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import router from "./routes/index.ts";
-import { annonceControllers } from "./controllers/annonceControllers.ts";
-import { logMiddleware } from "./middlewares.ts";
+import router from "./routes/index";
+import { annonceControllers } from "./controllers/annonceControllers";
+import { logMiddleware } from "./middlewares";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
